@@ -29,7 +29,7 @@ continue;
 }
 start = p;
 p++;
-while (get_flag(p, va_list a, &params)) /* while char ap p is a flag char */
+while (get_flag(p, &params)) /* while char ap p is a flag char */
 {
 p++; /*next char*/
 }
