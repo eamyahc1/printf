@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 {
 int Sum = 0;
 va_list ap;
-char *p, *start;
+const char *p, *start;
 params_t params = PARAMS_INIT;
 
 va_start(ap, format);
@@ -40,6 +40,8 @@ p++;
 if (!get_specified(p))
 Sum += print_form_to(start, p,
 params.l_modifier || params.h_modifier ? p - 1 : 0);
+Sum += print_from_to(start, p, params.l_modifier ||
+params.h_modifier ? p - 1 : 0);
 else
 Sum += get_print_func(p, ap, &params);
 }
