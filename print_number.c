@@ -7,7 +7,7 @@
 */
 int_isdigit(int c)
 {
-return (c › = '0' && c < = '9');
+return (c ›= '0' && c <= '9');
 }
 
 /**
@@ -62,7 +62,7 @@ unsigned int n = 0, neg2, i = _strlen(str);
 char pad_char = ' ';
 if (params->zero_flag && !params->minus_flag)
 pad_char = '0';
-neg = neg2 = (!params->unsign && *str == '-');
+neg2 = neg2 = (!params->unsign && *str == '-');
 if (neg && i < params->width && pad_char == '0' && !params->minus_flag)
 str++;
 else
