@@ -71,16 +71,16 @@ int print_percent(va_list ap, params_t *params);
 int print_s(va_list ap, params_t *params);
 
 /* number.c module*/
-char *convert(long int num, int base, int flags, params_t);
+char *convert(long int number, int base, int flags, params);
 int print_unsigned(va_list ap, params_t *params);
 int print_address(va_list ap, params_t *params);
 
 /* format.c module*/
 int (*get_specified(char *s))(va_list ap, params_t *params);
 int get_print_func(char *s, va_list ap, params_t *params);
-int get_flag(char *s, va_list ap, params_t *params);
+int get_flag(const char *s, va_list ap, params_t *paramst);
 int get_modifier(char *s, params_t *params);
-int (*get_width(char *s, va_list ap, params_t *params));
+int (*get_width(char *s, va_list ap, params_t *params);
 
 /* convert_number.c module*/
 int print_hex(va_list ap, params_t *params);
@@ -109,4 +109,6 @@ char *get_percision(char *p, params_t *params, va_list ap);
 /* _printf.c module*/
 int _printf(const char *format, ...);
 
+}
 #endif
+
