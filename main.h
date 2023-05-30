@@ -56,7 +56,7 @@ unsigned int l_modifier : 1;
 typedef struct specified
 {
 char *specified;
-int (*fnc)(va_list, params_t *);
+int (*fnc)(va_list, params_t *params);
 } specified_t;
 
 /*_put.c module*/
@@ -71,7 +71,7 @@ int print_percent(va_list ap, params_t *params);
 int print_s(va_list ap, params_t *params);
 
 /* number.c module*/
-char *convert(long int number, int base, int flags, params);
+char *convert(long int num, int base, int flags, params_t *params);
 int print_unsigned(va_list ap, params_t *params);
 int print_address(va_list ap, params_t *params);
 
@@ -80,7 +80,7 @@ int (*get_specified(char *s))(va_list ap, params_t *params);
 int get_print_func(char *s, va_list ap, params_t *params);
 int get_flag(char *s, va_list ap, params_t *params);
 int get_modifier(char *s, params_t *params);
-int (*get_width(char *s, va_list ap, params_t *params);
+int (*get_width(char *s, va_list ap, params_t *params));
 
 /* convert_number.c module*/
 int print_hex(va_list ap, params_t *params);
@@ -110,3 +110,4 @@ char *get_percision(char *p, params_t *params, va_list ap);
 int _printf(const char *format, ...);
 
 #endif
+
