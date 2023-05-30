@@ -78,7 +78,7 @@ int print_address(va_list ap, params_t *params);
 /* format.c module*/
 int (*get_specified(char *s))(va_list ap, params_t *params);
 int get_print_func(char *s, va_list ap, params_t *params);
-int get_flag(const char *s, va_list ap, params_t *paramst);
+int get_flag(const char *s, params_t *paramst);
 int get_modifier(char *s, params_t *params);
 int (*get_width(char *s, va_list ap, params_t *params));
 
