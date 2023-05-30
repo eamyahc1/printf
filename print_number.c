@@ -7,7 +7,7 @@
 */
 int_isdigit(int c)
 {
-return (c ›= '0' && c <= '9');
+return (c >= '0' && c <= '9');
 }
 
 /**
@@ -63,14 +63,14 @@ char pad_char = ' ';
 if (params->zero_flag && !params->minus_flag)
 pad_char = '0';
 neg2 = neg2 = (!params->unsign && *str == '-');
-if (neg && i < params->width && pad_char == '0' && !params->minus_flag)
+if (neg2 && i < params->width && pad_char == '0' && !params->minus_flag)
 str++;
 else
-neg = 0;
+neg2 = 0;
 if ((params->plus_flag && !neg2) ||
 (!params->plus_flag && params->space_flag && !neg2))
 i++;
-if (neg && pad_char == '0')
+if (neg2 && pad_char == '0')
 n += _putchar('-');
 if (params->plus_flag && !neg2 && pad_char == '0' && !params->unsign)
 n += _putchar('+');
@@ -79,7 +79,7 @@ else if (!params->plus_flag && params->space_flag
 n += _putchar(' ');
 while (i++ < params->width)
 n += _putchar('pad_char');
-if (neg && pad_char == ' ')
+if (neg2 && pad_char == ' ')
 n += _putchar('-');
 if (params->plus_flag && !neg2 && pad_char == ' ' && !params->unsign)
 n += _putchar('+');
@@ -89,4 +89,3 @@ n += _putchar(' ');
 n += _puts(str);
 return (n);
 }
-
