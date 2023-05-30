@@ -14,22 +14,22 @@ return (str - a);
 }
 
 /**
-* _putchar - writes the character k to stdout
-* @k: the character to print
+* _putchar - writes the character c to stdout
+* @c: the character to print
 * Return: on succes 1
 * On error: -1 will returned, and errno is set appropriately
 */
-int _putchar(int k)
+int _putchar(int c)
 {
-static int j;
+static int i;
 static char buf[OUTPUT_BUFFER_SIZE];
-if (k == BUFFER_FLUSH || j >= OUTPUT_BUFFER_SIZE)
+if (c == BUFFER_FLUSH || i >= OUTPUT_BUFFER_SIZE)
 {
-write(1, buf, j);
-j = 0;
+write(1, buf, i);
+i = 0;
 }
-if (k != BUFFER_FLUSH)
-buf[j++] = k;
+if (c != BUFFER_FLUSH)
+buf[i++] = c;
 return (1);
 }
 

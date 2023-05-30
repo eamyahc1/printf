@@ -19,7 +19,7 @@ specified_t specifiers[] = {
 {"x", print_hex},
 {"X", print_HEX},
 {"p", print_address},
-{"S", print_S},
+{"S", print_s},
 {"r", print_rev},
 {"R", print_rot13},
 {NULL, NULL}
@@ -121,7 +121,7 @@ else
 while (_isdigit(*s))
 i = i * 10 + (*s++ - '0');
 }
-params->width = d;
+params->width = i;
 return (s);
 }
 

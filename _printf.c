@@ -24,19 +24,21 @@ for (p = (char *)format; *p; p++)
 init_params(&params, ap);
 if (*p != '%')
 {
-sum += _putchar(*p);
+Sum += _putchar(*p);
 continue;
 }
 start = p;
 p++;
-while (get_flag(p, &params)) /* while char ap p is a flag char */
+while (get_flag(p, &params))
 {
 p++; /*next char*/
 }
 p = get_width(p, &params, ap);
-p = get_precision(p, &params, ap);
+p = get_percision(p, &params, ap);
+if (get_modifier(p, &params))
+p++;
 if (!get_specified(p))
-Sum += print_from_to(start, p,
+Sum += print_form_to(start, p,
 params.l_modifier || params.h_modifier ? p - 1 : 0);
 else
 Sum += get_print_func(p, ap, &params);
@@ -45,3 +47,4 @@ _putchar(BUFFER_FLUSH);
 va_end(ap);
 return (Sum);
 }
+
