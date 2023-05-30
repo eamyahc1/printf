@@ -36,8 +36,7 @@ p++; /*next char*/
 p = get_width(p, &params, ap);
 p = get_precision(p, &params, ap);
 if (!get_specified(p))
-Sum += print_from_to(start, p,
-params.l_modifier || params.h_modifier ? p - 1 : 0);
+Sum += print_from_to(start, p, params.l_modifier || params.h_modifier ? p - 1 : 0);
 else
 Sum += get_print_func(p, ap, &params);
 }
