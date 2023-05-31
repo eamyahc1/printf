@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
-* _printf - a function that prints anything
+* _printf - prints anything
 * @format: the format string
 *
 * Return: number of bytes printed
 */
 int _printf(const char *format, ...)
 {
-int Sum = 0;
+int sum = 0;
 va_list ap;
 char *p, *start;
 params_t params = PARAMS_INIT;
@@ -35,14 +35,14 @@ p++; /*next char*/
 }
 p = get_width(p, &params, ap);
 p = get_precision(p, &params, ap);
-if (!get_specified(p))
+if (!get_specifier(p))
 Sum += print_from_to(start, p,
 params.l_modifier || params.h_modifier ? p - 1 : 0);
 else
 Sum += get_print_func(p, ap, &params);
 }
-_putchar(BUFFER_FLUSH);
+_putchar(BUF_FLUSH);
 va_end(ap);
-return (Sum);
+return (sum);
 }
 
