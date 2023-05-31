@@ -23,7 +23,7 @@ n = -num;
 sign = '-';
 }
 array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
-ptr = &buffer[45];
+ptr = &buffer[49];
 *ptr = '\0';
 do {
 *--ptr = array[n % base];
@@ -49,9 +49,9 @@ unsigned long l;
 if (params->l_modifier)
 l = (unsigned long)va_arg(ap, unsigned long);
 else if (params->h_modifier)
-l = (unsigned short int)va_arg(ap, unsigned short int);
+l = (unsigned short int)va_arg(ap, unsigned int);
 else
-l = (unsigned int)va_arg(ap, unsigned t int);
+l = (unsigned int)va_arg(ap, unsigned int);
 
 params->unsign = 1;
 
@@ -69,7 +69,7 @@ int print_address(va_list ap, params_t *params)
 unsigned long int n = va_arg(ap, unsigned long int);
 char *str;
 if (!n)
-return (_puts("nil"));
+return (_puts("(mac)"));
 str = convert(n, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
 *--str = 'x';
 *--str = '0';
