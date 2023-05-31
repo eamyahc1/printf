@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
 * print_hex - prints unsigned hex numbers in lowercase
 * @ap: the argument pointer
@@ -72,7 +73,7 @@ return (c += print_number(str, params));
 }
 
 /**
-* print_octal - prints unsigne
+* print_octal - prints unsigned octal numbers
 * @ap: the argument pointer
 * @params: the parameters struct
 * Return: bytes printed
