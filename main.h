@@ -1,5 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
+
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -8,8 +9,12 @@
 
 #define BUFFER_SIZE 1024
 #define BUFFER_FLUSH -1
+
+
 #define NULL_STRING "(null)"
+
 #define PARAMS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+
 #define CONVERT_LOWERCASE 1
 #define CONVERT_UNSIGNED 2
 
@@ -34,6 +39,7 @@
 typedef struct parameters
 {
 unsigned int unsign : 1;
+
 unsigned int plus_flag : 1;
 unsigned int space_flag : 1;
 unsigned int hashtag_flag : 1;
@@ -75,7 +81,7 @@ char *convert(long int num, int base, int flags, params_t *params);
 int print_unsigned(va_list ap, params_t *params);
 int print_address(va_list ap, params_t *params);
 
-/* format.c module*/
+/* specified.c module*/
 int (*get_specified(char *s))(va_list ap, params_t *params);
 int get_print_func(char *s, va_list ap, params_t *params);
 int get_flag(char *s, va_list ap, params_t *params);

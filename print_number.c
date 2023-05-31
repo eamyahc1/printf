@@ -5,9 +5,9 @@
 * @c: the character to check
 * Return: 1 if digit, and 0 otherwise
 */
-int_isdigit(int c)
+int _isdigit(int c)
 {
-return (c › = '0' && c < = '9');
+return (c >= '0' && c <= '9');
 }
 
 /**
@@ -15,7 +15,7 @@ return (c › = '0' && c < = '9');
 * @s: the string whose length to check
 * Return: integer length of string
 */
-int_strlen(char *s)
+int _strlen(char *s)
 {
 int i = 0;
 while (*s++)
@@ -58,7 +58,7 @@ return (print_number_left_shift(str, params));
 */
 int print_number_right_shift(char *str, params_t *params)
 {
-unsigned int n = 0, neg2, i = _strlen(str);
+unsigned int n = 0, neg, neg2, i = _strlen(str);
 char pad_char = ' ';
 if (params->zero_flag && !params->minus_flag)
 pad_char = '0';
@@ -78,7 +78,7 @@ else if (!params->plus_flag && params->space_flag
 && !neg2 && !params->unsign && params->zero_flag)
 n += _putchar(' ');
 while (i++ < params->width)
-n += _putchar('pad_char');
+n += _putchar(pad_char);
 if (neg && pad_char == ' ')
 n += _putchar('-');
 if (params->plus_flag && !neg2 && pad_char == ' ' && !params->unsign)
