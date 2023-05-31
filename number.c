@@ -48,7 +48,7 @@ unsigned long l;
 if (params->l_modifier)
 l = (unsigned long)va_arg(ap, unsigned long);
 else if (params->h_modifier)
-l = (unsigned short int)va_arg(ap, unsigned int);
+l = (unsigned short int)va_arg(ap, unsigned short int);
 else
 l = (unsigned int)va_arg(ap, unsigned int);
 
@@ -74,3 +74,5 @@ str = convert(n, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
 *--str = '0';
 return (print_number(str, params));
 }
+
+
