@@ -34,12 +34,12 @@ while (get_flag(p, &params)) /* while char ap p is a flag char */
 p++; /*next char*/
 }
 p = get_width(p, &params, ap);
-p = get_precision(p, &params, ap);
+p = get_percision(p, &params, ap);
 if (!get_specifier(p))
-Sum += print_from_to(start, p,
+sum += print_from_to(start, p,
 params.l_modifier || params.h_modifier ? p - 1 : 0);
 else
-Sum += get_print_func(p, ap, &params);
+sum += get_print_func(p, ap, &params);
 }
 _putchar(BUF_FLUSH);
 va_end(ap);
