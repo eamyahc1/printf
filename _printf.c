@@ -1,16 +1,16 @@
 #include "main.h"
 
 /**
-* _printf - a function that prints anything
+* _printf - prints anything
 * @format: the format string
 *
 * Return: number of bytes printed
 */
 int _printf(const char *format, ...)
 {
-int Sum = 0;
+int sum = 0;
 va_list ap;
-const char *p, *start;
+char *p, *start;
 params_t params = PARAMS_INIT;
 
 va_start(ap, format);
@@ -24,7 +24,7 @@ for (p = (char *)format; *p; p++)
 init_params(&params, ap);
 if (*p != '%')
 {
-Sum += _putchar(*p);
+sum += _putchar(*p);
 continue;
 }
 start = p;
@@ -34,15 +34,15 @@ while (get_flag(p, &params)) /* while char ap p is a flag char */
 p++; /*next char*/
 }
 p = get_width(p, &params, ap);
-p = get_precision(p, &params, ap);
-if (!get_specified(p))
-Sum += print_from_to(start, p,
+p = get_percision(p, &params, ap);
+if (!get_specifier(p))
+sum += print_from_to(start, p,
 params.l_modifier || params.h_modifier ? p - 1 : 0);
 else
-Sum += get_print_func(p, ap, &params);
+sum += get_print_func(p, ap, &params);
 }
-_putchar(BUFFER_FLUSH);
+_putchar(BUF_FLUSH);
 va_end(ap);
-return (Sum);
+return (sum);
 }
 

@@ -52,7 +52,7 @@ unsigned int pad = 0, sum = 0, i = 0, j;
 switch ((int)(!str))
 case 1:
 str = NULL_STRING;
-j = pad = strlen(str);
+j = pad = _strlen(str);
 if (params->precision < pad)
 j = pad = params->precision;
 if (params->minus_flag)
