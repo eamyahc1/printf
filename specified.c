@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
-* get_specified - finds the format func
+* get_specifier - finds the format func
 * @s: the format string
 * Return: the number of bytes printes
 */
-int (*get_specified(char *s))(va_list ap, params_t *params)
+int (*get_specifier(char *s))(va_list ap, params_t *params)
 {
-specified_t specifiers[] = {
+specifier_t specifiers[] = {
 {"c", print_char},
 {"d", print_int},
 {"i", print_int},
@@ -19,25 +19,25 @@ specified_t specifiers[] = {
 {"x", print_hex},
 {"X", print_HEX},
 {"p", print_address},
-{"S", print_s},
+{"S", print_S},
 {"r", print_rev},
 {"R", print_rot13},
 {NULL, NULL}
 };
-int j = 0;
-while (specifiers[j].specified)
+int i = 0;
+while (specifiers[i].specifier)
 {
-if (*s == specifiers[j].specified[0])
+if (*s == specifiers[i].specifier[0])
 {
-return (specifiers[j].fnc);
+return (specifiers[i].f);
 }
-j++;
+i++;
 }
 return (NULL);
 }
 
 /**
-* get_print_func - finds the format fun
+* get_print_func - finds the format func
 * @s: the format string
 * @ap: argument pointer
 * @params: the the parameters struct
@@ -45,9 +45,9 @@ return (NULL);
 */
 int get_print_func(char *s, va_list ap, params_t *params)
 {
-int (*fnc)(va_list, params_t *) = get_specified(s);
-if (fnc)
-return (fnc(ap, params));
+int (*f)(va_list, params_t *) = get_specifier(s);
+if (f)
+return (f(ap, params));
 return (0);
 }
 
@@ -59,26 +59,26 @@ return (0);
 */
 int get_flag(char *s, params_t *params)
 {
-int j = 0;
+int i = 0;
 switch (*s)
 {
 case '+':
-j = params->plus_flag = 1;
+i = params->plus_flag = 1;
 break;
 case ' ':
-j = params->space_flag = 1;
+i = params->space_flag = 1;
 break;
 case '#':
-j = params->plus_flag = 1;
+i = params->hashtag_flag = 1;
 break;
 case '-':
-j = params->minus_flag = 1;
+i = params->minus_flag = 1;
 break;
 case '0':
-j = params->zero_flag = 1;
+i = params->zero_flag = 1;
 break;
 }
-return (j);
+return (i);
 }
 
 /**
@@ -89,18 +89,19 @@ return (j);
 */
 int get_modifier(char *s, params_t *params)
 {
-int j = 0;
+int i = 0;
 switch (*s)
 {
 case 'h':
-j = params->h_modifier = 1;
+i = params->h_modifier = 1;
 break;
 case 'l':
-j = params->l_modifier = 1;
+i = params->l_modifier = 1;
 break;
 }
-return (j);
+return (i);
 }
+
 /**
 * get_width - gets the width from the format string
 * @s: the format string
@@ -110,18 +111,18 @@ return (j);
 */
 char *get_width(char *s, params_t *params, va_list ap)
 {
-int i = 0;
+int d = 0;
 if (*s == '*')
 {
-i = va_arg(ap, int);
+d = va_arg(ap, int);
 s++;
 }
 else
 {
 while (_isdigit(*s))
-i = i * 10 + (*s++ - '0');
+d = d * 10 + (*s++ - '0');
 }
-params->width = i;
+params->width = d;
 return (s);
 }
 
