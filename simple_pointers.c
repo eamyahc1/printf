@@ -2,21 +2,21 @@
 
 /**
  * print_from_to - imprime une plage d'adresses de caractères
- * @start: adresse de début
- * @stop: adresse de fin
- * @except: adresse à exclure
+ * @start: starting address
+ * @stop: stopping address
+ * @except: except address
  * Return: le nombre d'octets imprimés
  */
 int print_from_to(char *start, char *stop, char *except)
 {
-int S = 0;
+int sum = 0;
 while (start <= stop)
 {
 if (start != except)
-S += _putchar(*start);
+sum += _putchar(*start);
 start++;
 }
-return (S);
+return (sum);
 }
 
 /**
@@ -27,7 +27,7 @@ return (S);
  */
 int print_rev(va_list ap, params_t *params)
 {
-int len, S = 0;
+int len, sum = 0;
 char *str = va_arg(ap, char *);
 (void)params;
 
@@ -38,10 +38,10 @@ len++;
 str--;
 
 for (; len > 0; len--, str--)
-S += _putchar(*str);
+sum += _putchar(*str);
 }
 
-return (S);
+return (sum);
 }
 
 /**
@@ -54,7 +54,7 @@ int print_rot13(va_list ap, params_t *params)
 {
 int i, index;
 int count = 0;
-char arr[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+char arr[] = "NOPQRSTUVWXYZABCDEFGHIJKLM    nopqrstuvwxyzabcdefghijklm";
 char *a = va_arg(ap, char *);
 (void)params;
 
@@ -69,12 +69,9 @@ index = a[i] - 65;
 count += _putchar(arr[index]);
 }
 else
-{
 count += _putchar(a[i]);
-}
 i++;
 }
 return (count);
 }
-
 
